@@ -54,7 +54,7 @@ test('browser discovery prefers the override, then PATH, then known locations', 
   }
   const candidates = browserCandidates({ env, platform: 'win32' })
   assert.equal(candidates[0], 'D:\\custom\\chrome.exe')
-  assert.ok(candidates.includes(join('C:\\one', 'chrome.exe')))
+  assert.ok(candidates.includes('C:\\one\\chrome.exe'))
   assert.ok(candidates.some((value) => value.includes('Edge')))
   assert.equal(findBrowser({ exe: 'D:\\custom\\chrome.exe', env, platform: 'win32', exists: (file) => file === 'D:\\custom\\chrome.exe' }), 'D:\\custom\\chrome.exe')
   assert.equal(findBrowser({ env: {}, platform: 'win32', exists: () => false }), null)
