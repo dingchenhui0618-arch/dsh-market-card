@@ -1,0 +1,34 @@
+{
+  "category": "security",
+  "screenshots": [
+    {
+      "path": "docs/screenshot-1.png",
+      "caption": {
+        "zh": "审查面板：一次真实会话里的计数与判定列表",
+        "en": "Review panel: counts and verdicts from a real session"
+      }
+    }
+  ],
+  "capabilities": {
+    "zh": [
+      "破坏性命令先由本地正则按工具名与参数模式识别，这一层不调用模型",
+      "只有第一层命中才调用一次独立的小模型复核，拒绝时必须给出理由",
+      "面板实时显示每一次判定，送审的调用追加到本地审计日志",
+      "任何异常路径一律放行——最坏表现是这道门什么都没做"
+    ],
+    "en": [
+      "Destructive commands are caught by local regexes on the tool name and arguments, with zero model calls",
+      "Only a first-layer hit triggers one independent small-model review, which must give a reason when it denies",
+      "The panel shows every verdict live, and reviewed calls are appended to a local audit log",
+      "Every failure path allows the call, so the worst case is that the gate does nothing"
+    ]
+  },
+  "limitations": {
+    "en": [
+      "Not a security boundary: it reduces accidental damage, it does not stop malicious code",
+      "Classification uses tool names and argument patterns, not tool-declared types",
+      "It never answers ask; an unavailable model degrades to allow",
+      "Parallel dangerous calls can still exhaust the local audit ring buffer"
+    ]
+  }
+}

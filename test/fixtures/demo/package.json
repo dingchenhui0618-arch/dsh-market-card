@@ -1,0 +1,15 @@
+{
+  "name": "demo-plugin",
+  "version": "1.2.3",
+  "description": "A demo plugin for tests. 测试用示例插件。",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "keywords": ["demo", "test", "card"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/example/demo-plugin.git"
+  }
+}

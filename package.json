@@ -1,0 +1,73 @@
+{
+  "name": "dsh-market-card",
+  "version": "0.1.0",
+  "description": "Market card generator for DeepSeek Harness plugins: reads README.md, package.json and docs/*.png, then renders a self-contained bilingual HTML card and a real PNG with an install command, a screenshot wall, capabilities and an explicit limitations section. · 把仓库现状变成一张可直接贴到插件市场上架 PR 的市场卡片。",
+  "type": "module",
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./core": "./lib/card.js",
+    "./png": "./lib/browser.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-market-card": "bin/market-card.mjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "card": "node bin/market-card.mjs . --out dist",
+    "prepack": "node scripts/build.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ],
+      "platform": "web"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "marketplace",
+    "market-card",
+    "readme",
+    "screenshot",
+    "png",
+    "release"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dingchenhui0618-arch/dsh-market-card.git"
+  },
+  "homepage": "https://github.com/dingchenhui0618-arch/dsh-market-card#readme",
+  "bugs": {
+    "url": "https://github.com/dingchenhui0618-arch/dsh-market-card/issues"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}

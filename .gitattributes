@@ -1,0 +1,6 @@
+# src/ is hand-written, lib/ is the output of scripts/build.mjs; both are committed.
+# Pin LF so a Windows checkout does not turn every diff into line-ending noise.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

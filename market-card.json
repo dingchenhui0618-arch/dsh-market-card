@@ -1,0 +1,52 @@
+{
+  "category": "docs",
+  "title": { "zh": "市场卡片", "en": "Market Card" },
+  "tagline": {
+    "zh": "读仓库的 README 与 docs/*.png，生成一张可直接贴进上架 PR 的卡片：中英双语标题、安装命令、截图墙、能力与限制，输出静态 HTML 与 2x PNG。",
+    "en": "Turn a repository's README and docs/*.png into a publishable market card: bilingual title, install command, screenshot wall, capabilities and limitations, as static HTML and a 2x PNG."
+  },
+  "capabilities": {
+    "zh": [
+      "从 README 与 docs/*.png 提取中英标题、安装命令和最多 4 张截图",
+      "输出自包含 HTML、2x PNG、可直接粘贴的 card.md 和带 provenance 的 card.json",
+      "字段不全时 --strict 拒绝出图，否则盖 DRAFT 章并列出待补字段",
+      "在对话视图的「市场卡片」面板里生成、预览并复制安装命令"
+    ],
+    "en": [
+      "Extracts bilingual titles, the install command and up to four screenshots from README and docs/*.png",
+      "Writes self-contained HTML, a 2x PNG, a paste-ready card.md and a provenance-rich card.json",
+      "Refuses to render with --strict when a required field is missing; otherwise stamps DRAFT and lists the gaps",
+      "Generates, previews and copies the install command from the 市场卡片 panel in the chat view"
+    ]
+  },
+  "limitations": {
+    "zh": [
+      "必须装有 Chrome / Edge；找不到时仍写 HTML，PNG 报 browser-missing，退出码 3",
+      "卡片固定 1200px 宽、不响应式，超过 16000px 高会拒绝出图",
+      "提取是启发式的：标题取首个加粗短语、安装命令取第一个代码块，怪结构要靠 market-card.json 覆盖",
+      "不做机器翻译、不生成事实、不推断市场分类，也不上传任何内容"
+    ],
+    "en": [
+      "Needs a local Chrome or Edge; without one it still writes HTML, but PNG fails with browser-missing and exit code 3",
+      "The card is a fixed 1200px wide editorial layout, and is refused above 16000px tall",
+      "Extraction is heuristic: the first bold phrase becomes the title and the first shell fence the install command",
+      "No machine translation, no invented facts, no inferred market category, and nothing leaves the machine"
+    ]
+  },
+  "screenshots": [
+    {
+      "path": "docs/panel.png",
+      "caption": {
+        "zh": "插件面板：填仓库路径、生成、预览并复制安装命令",
+        "en": "The plugin panel: point at a repository, generate, preview and copy the install command"
+      }
+    },
+    {
+      "path": "docs/example-card.png",
+      "caption": {
+        "zh": "为 dsh-warden 生成的真实卡片，2400×3068",
+        "en": "A real card generated for dsh-warden, 2400×3068"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+node_modules/
+*.log
+
+# Generated cards (committed only when a docs/ copy is deliberate)
+dist/
+
+# Local credentials never belong in a public repo
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.verify/
