@@ -161,7 +161,7 @@ test('a repository without README.md is refused with 400', async (t) => {
 
 test('an output directory outside the repository is refused', async (t) => {
   const host = setup(t)
-  const response = await call(host.routes, 'POST', '/dsh-market-card/generate', { repo: host.dir, outDir: '..\\elsewhere' })
+  const response = await call(host.routes, 'POST', '/dsh-market-card/generate', { repo: host.dir, outDir: '../elsewhere' })
   assert.equal(response.status, 400)
   assert.equal(json(response).error.code, 'bad-out-dir')
 })

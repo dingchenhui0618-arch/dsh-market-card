@@ -6,7 +6,7 @@
 // without it instead of aborting the whole client graph.
 
 import { existsSync, readFileSync, statSync } from 'node:fs'
-import { basename, isAbsolute, join, relative, resolve } from 'node:path'
+import { isAbsolute, join, relative, resolve } from 'node:path'
 import { CardError, TOOL_NAME, TOOL_VERSION } from './card.js'
 import { findBrowser, renderPng } from './browser.js'
 import { generateCard, summarize } from './generate.js'
@@ -72,7 +72,10 @@ function browserInfo(settings) {
     found = null
   }
   if (typeof found !== 'string' || found.length === 0) return { found: false, path: null, name: null }
-  return { found: true, path: found, name: basename(found) }
+  // The configured browser may be a Windows path even when the host runs on
+  // Linux (tests do exactly that), so split on both separators.
+  const name = found.split(/[\\/]/).filter((part) => part.length > 0).pop() || null
+  return { found: true, path: found, name: name }
 }
 
 function contentType(file) {
